@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Search</title>
+    <link rel="stylesheet" href="/search.css" />
+  </head>
+  <body>
+    <form action="/search" method="GET">
+      <input type="text" name="title" />
+      <button type="submit">Search</button>
+    </form>
+    <!-- if the user entered a book to search, then print out the results -->
+    <% if (searched){ %>
+
+    <h2>Book Results:</h2>
+    <!-- if a book matches the query (if the server found a matching book and sent it through books) -->
+    <% if (books.length > 0) { %>
+    <ul>
+      <!-- loop through all the matching books and print them out -->
+      <% var count = 0; books.forEach(book => { %>
+      <li>
+        <strong>Title:</strong> <%= book.title %> <br />
+        <strong>Author:</strong> <%= authors[count].authorName %> <br />
+        <strong>Year:</strong> <%= book.year %><br />
+        <strong>Genre(s):</strong> <%= genres[count].genreList%>
+      </li>
+      <% count++; }); %>
+    </ul>
+    <!-- otherwise if no matching book was found, then print out "No books found" -->
+    <% } else { %>
+    <div class="no-results">
+      <div class="no-results-container">
+        <img
+          src="/images/crying-cat.gif"
+          alt="Sadge Peepo Gif"
+          class="no-results-image"
+        />
+        <p>No books found with the title <strong><%= title %></strong>.</p>
+      </div>
+    </div>
+    <% } %> <% } %>
+
+    <a href="/"> <button type="button">Home</button></a>
+  </body>
+</html>

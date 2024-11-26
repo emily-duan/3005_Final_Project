@@ -1,0 +1,44 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* List Styles */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+/* Home Button Styles */
+a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+button[type="button"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="button"]:hover {
+  background-color: #0056b3;
+}

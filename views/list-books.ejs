@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>List Books</title>
+    <link rel="stylesheet" href="list-books.css" />
+  </head>
+  <body>
+    <h1>List of All Books</h1>
+    <ul>
+      <% books.forEach(book => { %>
+      <li><%= book.bookTitle %> by <%= book.authorName %></li>
+      <% }); %>
+    </ul>
+
+    <a href="/"> <button type="button">Home</button></a>
+  </body>
+</html>

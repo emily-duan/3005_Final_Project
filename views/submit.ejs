@@ -10,7 +10,10 @@
       <h1>Form Submission Successful</h1>
       <p>Book Title: <%= title %></p>
       <p>Author Name: <%= author %></p>
-      <a href="/">Go Back</a>
+      <p>Year Published: <%= year %></p>
+
+      <p>Genre(s): <%= genre.join(", ") %></p>
+      <a href="/"> <button type="button">Home</button></a>
       <%-include("footer.ejs")%>
     </div>
   </body>
