@@ -2,16 +2,17 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
 /* Form Styles */
-form {
+#add-book-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,6 +31,19 @@ input[type="text"] {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+/* input[type="submit"] {
+  background-color: #ab886d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+} */
+
+/* input[type="submit"]:hover {
+  background-color: #493628;
+} */
 
 /* Dropdown Styles */
 select {
@@ -54,7 +68,7 @@ select[multiple] {
 }
 
 input[type="submit"] {
-  background-color: #4caf50;
+  background-color: #ab886d;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -63,20 +77,82 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #493628;
 }
 
-/* Link Styles */
-div {
-  text-align: center;
-  margin-bottom: 10px;
+/* Dropdown Styles */
+#dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-a {
-  color: #007bff;
+#genre-dropdown-toggle {
+  background-color: #ab886d;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#genre-dropdown-toggle:hover {
+  background-color: #493628;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px 0;
+}
+
+.dropdown-menu label {
+  color: ab886d;
+  padding: 12px 16px;
   text-decoration: none;
+  display: block;
+  cursor: pointer;
 }
 
-a:hover {
-  text-decoration: underline;
+.dropdown-menu label:hover {
+  background-color: #e4e0e1;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  color: #ab886d;
+}
+
+.navbar {
+  background-color: #493628 !important;
+}
+
+.btn {
+  background-color: #ab886d !important;
+  border: none !important;
+}
+
+.btn:hover {
+  background-color: #d6c0b3 !important;
+}
+/* 
+.btn-success {
+  background-color: #ab886d !important;
+} */
+
+.navbar .form-control {
+  height: 38px;
+  width: 300px;
+  margin-right: 10px;
+}
+
+.navbar .btn {
+  height: 38px;
+  padding: 0 12px;
+  font-size: 14px;
+  white-space: nowrap;
 }

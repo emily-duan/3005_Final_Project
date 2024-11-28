@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>List of Authors</title>
+    <link rel="stylesheet" href="list-authors.css" />
+  </head>
+  <body>
+    <h1>List of All Authors</h1>
+
+    <a href="/"> <button type="button">Home</button></a>
+
+    <ul>
+      <% authors.forEach(author => { %>
+      <li>
+        <a href="/author-book-list/<%=encodeURIComponent(author.name)%>">
+          <%= author.name %></a
+        >
+      </li>
+      <% }); %>
+    </ul>
+
+    <a href="/"> <button type="button">Home</button></a>
+  </body>
+</html>

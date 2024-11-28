@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Books by <%= authorName %></title>
+    <link rel="stylesheet" href="/author-book-list.css" />
+  </head>
+  <body>
+    <h1>Books by <%= authorName %></h1>
+    <ul>
+      <% books.forEach(book => { %>
+      <li><%= book.title %> (Published: <%= book.year %>)</li>
+      <% }); %>
+    </ul>
+
+    <div class="button-container">
+      <a href="/list-authors">
+        <button type="button">Back to Author List</button>
+      </a>
+
+      <a href="/">
+        <button type="button">Home</button>
+      </a>
+    </div>
+  </body>
+</html>

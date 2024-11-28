@@ -3,12 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <title>Book Tracker</title>
-    <link rel="stylesheet" href="/index.css" />
-    <link
+    <!-- <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/index.css" />
   </head>
 
   <script>
@@ -30,65 +43,100 @@
   </script>
 
   <body>
-    <h1>Book Tracker</h1>
-    <form action="/submit" method="POST">
-      <label for="Book Title"> Book Title</label>
-      <input type="text" id="title" name="title" required />
-      <label for="Author Name"> Author Name </label>
-      <input id="author" type="text" name="author" required />
-      <label for="genres">Genres</label>
-
-      <!-- drop-box to select genre -->
-      <div class="dropdown">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="javascript:void(0)">Book Tracker</a>
         <button
-          id="genre-dropdown-toggle"
+          class="navbar-toggler"
           type="button"
-          id="multiSelectDropdown"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
+          data-bs-toggle="collapse"
+          data-bs-target="#mynavbar"
         >
-          Select
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <ul class="dropdown-menu" aria-labelledby="multiSelectDropdown">
-          <li>
-            <label>
-              <input type="checkbox" value="Fantasy" />
-              Fantasy
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" value="Romance" />
-              Romance
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" value="Science Fiction" />
-              Science Fiction
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" value="Dystopian" />
-              Dystopian
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" value="Action/Adventure" />
-              Action/Adventure
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" value="Thriller" />
-              Thriller
-            </label>
-          </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="mynavbar">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/list-books">Books</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/list-authors">Authors</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="javascript:void(0)">Link</a>
+            </li> -->
+          </ul>
+          <form class="d-flex" action="/search" method="GET">
+            <input class="form-control me-2" type="text" name="title" />
+            <button class="btn btn-primary" type="submit">
+              Search by Title
+            </button>
+          </form>
+        </div>
       </div>
-      <!-- <select id="genres" name="genres" multiple>
+    </nav>
+    <br />
+
+    <div class="container my-5">
+      <h3 class="text-center mb-4">Add a Book</h3>
+      <form id="add-book-form" action="/submit" method="POST">
+        <label for="Book Title"> Book Title</label>
+        <input type="text" id="title" name="title" required />
+        <label for="Author Name"> Author Name </label>
+        <input id="author" type="text" name="author" required />
+        <label for="genres">Genres</label>
+
+        <!-- drop-box to select genre -->
+        <div class="dropdown">
+          <button
+            id="genre-dropdown-toggle"
+            type="button"
+            id="multiSelectDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Select
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="multiSelectDropdown">
+            <li>
+              <label>
+                <input type="checkbox" value="Fantasy" />
+                Fantasy
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Romance" />
+                Romance
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Science Fiction" />
+                Science Fiction
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Dystopian" />
+                Dystopian
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Action/Adventure" />
+                Action/Adventure
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Thriller" />
+                Thriller
+              </label>
+            </li>
+          </ul>
+        </div>
+        <!-- <select id="genres" name="genres" multiple>
       
         <option value="Mystery">Mystery</option>
         <option value="Horror">Horror</option>
@@ -117,19 +165,26 @@
         <option value="Poetry">Poetry</option>
       </select> -->
 
-      <label for="Year Published"> Year Published </label>
-      <input id="year" type="text" name="year" required />
+        <label for="Year Published"> Year Published </label>
+        <input id="year" type="text" name="year" required />
 
-      <!-- from chatgpt for the drop box -->
-      <input type="hidden" id="genres" name="genres" />
+        <!-- from chatgpt for the drop box -->
+        <input type="hidden" id="genres" name="genres" />
 
-      <input type="submit" value="Add Book" />
-    </form>
-    <div>
-      <a href="/list-books"> List Books</a>
+        <input type="submit" value="Add Book" />
+      </form>
+    </div>
+    <!-- <div>
+      <a href="/list-books"> Book List</a>
     </div>
     <div>
+      <a href="/list-authors"> Author List </a>
+    </div>
+    <div>
+      <a href="/list-genres"> Genre List </a>
+    </div> -->
+    <!-- <div>
       <a href="/search"> Search</a>
-    </div>
+    </div> -->
   </body>
 </html>

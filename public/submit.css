@@ -39,7 +39,7 @@ p {
 }
 
 button[type="button"] {
-  background-color: #007bff;
+  background-color: #493628;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -48,5 +48,5 @@ button[type="button"] {
 }
 
 button[type="button"]:hover {
-  background-color: #0056b3;
+  background-color: #493628;
 }

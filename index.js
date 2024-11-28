@@ -1,3 +1,8 @@
+// note to self:
+// - db.get <- returns a single row (e.g., select with limit 1)
+// - db.run <- for commands that doesn't return any rows (e.g., insert, update, delete)
+// - db.all <- returns multiple rows of data (e.g., select without a limit clause)
+
 import bodyParser from "body-parser";
 import express from "express";
 // to get full path
@@ -234,28 +239,43 @@ app.get("/list-books", (req, res) => {
   );
 });
 
+// lists all the books when the user goes to the List all Books page
+app.get("/list-authors", (req, res) => {
+  db.all(`SELECT a.name FROM ${authorTable} a`, [], (err, authorRows) => {
+    if (err) {
+      console.error("Error fetching data: ", err);
+      return;
+    }
+
+    // log the retrieved data
+    console.log("Authors: ", authorRows);
+    // sending rows - an object with the title and author as the keys  - to list-books.ejs to display the books
+    res.render("list-authors.ejs", { authors: authorRows });
+  });
+});
+
 // when the user searches for a book (by title? or in general?)
 app.get("/search", (req, res) => {
   const requestedBook = req.query.title;
   console.log("requestedBook: ", requestedBook);
 
-  // gets the bookID and everything we want to display based on the title (the book title is the filter)
-  // concatenates all the genres into one string (for output) and names it under the alias of "genres"
-  // groups the information together by their bookID (the primary key since it's unique)
+  // if the user doesn't put anything in the search bar, just stay at the home page
+  if (requestedBook.trim() === "") {
+    // If the search input is empty, redirect to the home page
+    res.redirect("/");
+    return;
+  }
 
+  // if the user puts in an invalid book request
   if (!requestedBook) {
     // sending rows - an object with the title and author as the keys  - to list-books.ejs to display the books
     res.render("search.ejs", {
-      // books: null,
-      // genres: null,
-      // authors: null,
       searched: !!requestedBook,
-      // title: requestedBook,
     });
     return;
   }
 
-  console.log("at 1");
+  // console.log("at 1");
   db.all(
     `SELECT b.bookID, b.title, b.year
     FROM book b
@@ -268,7 +288,7 @@ app.get("/search", (req, res) => {
         console.error("Error fetching data: ", err);
         return;
       }
-      console.log("at 2");
+      // console.log("at 2");
 
       db.all(
         `SELECT GROUP_CONCAT(genreName, ", ") AS genreList FROM (
@@ -284,7 +304,7 @@ app.get("/search", (req, res) => {
             console.error("Error fetching data: ", err);
             return;
           }
-          console.log("at 3");
+          // console.log("at 3");
 
           db.all(
             `
@@ -303,15 +323,15 @@ app.get("/search", (req, res) => {
                 return;
               }
 
-              // log the retrieved data
-              console.log(
-                "Book Requested: ",
-                rows,
-                "\nGenres: ",
-                //genre[0].genreList,
-                "\nAuthor Name: "
-                //author[0].authorName
-              );
+              // // log the retrieved data
+              // console.log(
+              //   "Book Requested: ",
+              //   rows,
+              //   "\nGenres: ",
+              //   //genre[0].genreList,
+              //   "\nAuthor Name: "
+              //   //author[0].authorName
+              // );
 
               // sending rows - an object with the title and author as the keys  - to list-books.ejs to display the books
               res.render("search.ejs", {
@@ -325,6 +345,33 @@ app.get("/search", (req, res) => {
           );
         }
       );
+    }
+  );
+});
+
+// gets all the author's books
+app.get("/author-book-list/:authorName", (req, res) => {
+  const authorName = decodeURIComponent(req.params.authorName);
+  console.log("author name: ", authorName);
+
+  // get all the books written by the chosen author
+  db.all(
+    `SELECT b.bookID, b.title, b.year 
+      FROM ${bookTable} b
+      NATURAL JOIN ${bookAuthorTable} ba
+      NATURAL JOIN ${authorTable} a
+      WHERE a.name = ?`,
+    [authorName],
+    (err, books) => {
+      if (err) {
+        console.error("Error fetching books by author: ", err);
+        return;
+      }
+
+      res.render("author-book-list.ejs", {
+        authorName: authorName,
+        books: books,
+      });
     }
   );
 });

@@ -1,0 +1,61 @@
+/* list-books.css */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #e4e0e1;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  color: #493628;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+li {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+li a {
+  text-decoration: none;
+  color: #493628;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+li a:hover {
+  color: #ab886d;
+}
+
+button {
+  display: block;
+  margin: 40px auto;
+  padding: 10px 20px;
+  background-color: #493628;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none; /* Add this line to remove the underline */
+}
+
+button:hover {
+  background-color: #ab886d;
+}
+
+a {
+  text-decoration: none;
+}
