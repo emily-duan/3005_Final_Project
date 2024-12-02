@@ -276,6 +276,7 @@ app.get("/search", (req, res) => {
   }
 
   // console.log("at 1");
+  // seelcting the book's title and year published
   db.all(
     `SELECT b.bookID, b.title, b.year
     FROM book b
@@ -289,7 +290,7 @@ app.get("/search", (req, res) => {
         return;
       }
       // console.log("at 2");
-
+      // getting the genre(s) of the book
       db.all(
         `SELECT GROUP_CONCAT(genreName, ", ") AS genreList FROM (
           SELECT DISTINCT b.bookID as bookID, g.genreCode as genreCode, g.genreName AS genreName
@@ -305,7 +306,7 @@ app.get("/search", (req, res) => {
             return;
           }
           // console.log("at 3");
-
+          // getting the author(s) of the book
           db.all(
             `
             SELECT GROUP_CONCAT(author, ", ") AS authorName FROM (

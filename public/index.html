@@ -42,6 +42,7 @@
     });
   </script>
 
+  <!-- creating a navigation bar at the top of the page using bootstrap -->
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <div class="container-fluid">
@@ -77,6 +78,7 @@
     </nav>
     <br />
 
+    <!-- section that allows user to add a book to the database -->
     <div class="container my-5">
       <h3 class="text-center mb-4">Add a Book</h3>
       <form id="add-book-form" action="/submit" method="POST">
@@ -86,6 +88,56 @@
         <input id="author" type="text" name="author" required />
         <label for="genres">Genres</label>
 
+        <!-- drop-box to select genre -->
+        <!-- <div class="dropdown">
+          <button
+            id="genre-dropdown-toggle"
+            type="button"
+            id="multiSelectDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Select
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="multiSelectDropdown">
+            <li>
+              <label>
+                <input type="checkbox" value="Fantasy" />
+                Fantasy
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Romance" />
+                Romance
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Science Fiction" />
+                Science Fiction
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Dystopian" />
+                Dystopian
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Action/Adventure" />
+                Action/Adventure
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Thriller" />
+                Thriller
+              </label>
+            </li>
+          </ul>
+        </div> -->
         <!-- drop-box to select genre -->
         <div class="dropdown">
           <button
@@ -134,36 +186,146 @@
                 Thriller
               </label>
             </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Mystery" />
+                Mystery
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Horror" />
+                Horror
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Thriller/Suspense" />
+                Thriller/Suspense
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Historical Fiction" />
+                Historical Fiction
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="LGBTQ+" />
+                LGBTQ+
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Literary Fiction" />
+                Literary Fiction
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Graphic Novel" />
+                Graphic Novel
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Short Story" />
+                Short Story
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Memoir/Autobiography" />
+                Memoir/Autobiography
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Biography" />
+                Biography
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Food and Drink" />
+                Food and Drink
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Art/Photography" />
+                Art/Photography
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Self-help" />
+                Self-help
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="History" />
+                History
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Travel" />
+                Travel
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="True Crime" />
+                True Crime
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Humour" />
+                Humour
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Religion/Spirituality" />
+                Religion/Spirituality
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Guide/How-to" />
+                Guide/How-to
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Science & Technology" />
+                Science & Technology
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Fairy Tale, Fables, Folk Tales" />
+                Fairy Tale, Fables, Folk Tales
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Contemporary" />
+                Contemporary
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Poetry" />
+                Poetry
+              </label>
+            </li>
           </ul>
         </div>
-        <!-- <select id="genres" name="genres" multiple>
-      
-        <option value="Mystery">Mystery</option>
-        <option value="Horror">Horror</option>
-        <option value="Thriller/Suspense">Thriller/Suspense</option>
-        <option value="Historical Fiction">Historical Fiction</option>
-        <option value="LGBTQ+">LGBTQ+</option>
-        <option value="Literary Fiction">Literary Fiction</option>
-        <option value="Graphic Novel">Graphic Novel</option>
-        <option value="Short Story">Short Story</option>
-        <option value="Memoir/Autobiography">Memoir/Autobiography</option>
-        <option value="Biography">Biography</option>
-        <option value="Food and Drink">Food and Drink</option>
-        <option value="Art/Photography">Art/Photography</option>
-        <option value="Self-help">Self-help</option>
-        <option value="History">History</option>
-        <option value="Travel">Travel</option>
-        <option value="True Crime">True Crime</option>
-        <option value="Humour">Humour</option>
-        <option value="Religion/Spirituality">Religion/Spirituality</option>
-        <option value="Guide/How-to">Guide/How-to</option>
-        <option value="Science & Technology">Science & Technology</option>
-        <option value="Fairy Tale, Fables, Folk Tales">
-          Fairy Tale, Fables, Folk Tales
-        </option>
-        <option value="Contemporary">Contemporary</option>
-        <option value="Poetry">Poetry</option>
-      </select> -->
 
         <label for="Year Published"> Year Published </label>
         <input id="year" type="text" name="year" required />

@@ -1,0 +1,15 @@
+to run the server:
+
+- nodemon --ext '\*' index.js
+  or:
+- node index.js
+
+server is ran on:
+
+- port 3005
+
+database file is called:
+
+- books.db
+  and is located in the folder called:
+- final_project
